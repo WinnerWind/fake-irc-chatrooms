@@ -11,6 +11,6 @@ function sendNewMessage(){
     } while (randomIndex === lastIndex && ircMessages.length > 1); // Ensure messages array has more than 1 item to avoid infinite loop
 
     const message = ircMessages[randomIndex];
-    ircMessageDisplay.textContent += message;
+    ircMessageDisplay.textContent += message+"\n"; // Line break required for proper rendering.
     lastIndex = randomIndex; // Update the last displayed index
 }
