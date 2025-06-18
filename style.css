@@ -10,7 +10,7 @@ body {
     padding: 20px;
     background-color: var(--bg-color);
     color: var(--text-color);
-    display: flex;
+    display: inline-block;
     justify-content: left;
     align-items: left;
     min-height: 100vh;
