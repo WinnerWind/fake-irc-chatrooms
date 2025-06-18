@@ -24,15 +24,11 @@ async function sendNewMessage(){
 async function startMessages() {
   await sendNewMessage() //We want to send a new message
 
-  console.log("Function executed at:", new Date().toLocaleTimeString());
-
   // Generate a random delay between min (inclusive) and max (exclusive) seconds
   const minDelaySeconds = 0.1; // Minimum delay in seconds
   const maxDelaySeconds = 1; // Maximum delay in seconds
 
   const randomDelayMilliseconds = getRandomIndex(minDelaySeconds,maxDelaySeconds) * 1000;
-
-  console.log("Next execution in:", randomDelayMilliseconds / 1000, "seconds");
 
   // Schedule the next execution
   setTimeout(startMessages, randomDelayMilliseconds);
