@@ -15,7 +15,12 @@ async function sendNewMessage(){
 
     for (let messageIndex in messageGroup) {
         ircMessageDisplay.textContent += messageGroup[messageIndex]+"\n"; // Line break required for proper rendering.
-        await delay(1000) //TODO Randomize this
+        // Formula master :
+        // Finds the amount of time it should take for a good typist to type the message by doing length of text divided by 10
+        // adds a random delay between 0.5 and 2 seconds
+        // adds an extra delay between 0 and 1 seconds.
+        var delayBetweenMessages = (messageGroup[messageIndex].length/10)+(getRandomIndex(2,5)*1000)+(Math.random()*1000)
+        await delay(delayBetweenMessages)
     }
 
     lastIndex = randomIndex; // Update the last displayed index
