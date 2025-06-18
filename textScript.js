@@ -1,9 +1,8 @@
-const ircMessages = [["Message1","Message2","Message3"],["a","b","c"],["1","2","3"]]
-
+var ircMessages = [] //Fill this from fetchMessages()
 var ircMessageDisplay = document.getElementById("mainChat")
-
 let lastIndex = -1; // Prevents immediate repeats.
 
+fetchMessages()
 startMessages()
 
 async function sendNewMessage(){
@@ -37,6 +36,23 @@ async function startMessages() {
 
   // Schedule the next execution
   setTimeout(startMessages, randomDelayMilliseconds);
+}
+
+async function fetchMessages() {
+  const messageFiles = ["test.txt","file2.txt"]
+  for (let file of messageFiles){
+    try {
+      const response = await fetch('messages/'+file);
+      if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+
+      const text = await response.text();
+      ircMessages.push(text.split('\n').filter(line => line.trim().length > 0)); // Split and filter empty lines
+
+      console.log("Messages loaded:", ircMessages);
+    } catch (error) {
+      console.error("Error loading messages:", error);
+    }
+  }
 }
 
 function getRandomIndex(min,max){
