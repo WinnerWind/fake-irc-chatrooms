@@ -14,7 +14,9 @@ async function sendNewMessage(){
     const messageGroup = ircMessages[randomIndex];
 
     for (let messageIndex in messageGroup) {
-        ircMessageDisplay.textContent += messageGroup[messageIndex]+"\n"; // Line break required for proper rendering.
+        const newMessageDiv = document.createElement("div");
+        newMessageDiv.textContent = messageGroup[messageIndex];
+        ircMessageDisplay.insertBefore(newMessageDiv, ircMessageDisplay.firstChild);
         // Formula master :
         // Finds the amount of time it should take for a good typist to type the message by doing length of text divided by 10
         // adds a random delay between 0.5 and 2 seconds
