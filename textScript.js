@@ -15,7 +15,7 @@ async function sendNewMessage(){
 
     for (let messageIndex in messageGroup) {
         const newMessageDiv = document.createElement("div");
-        newMessageDiv.textContent = messageGroup[messageIndex];
+        newMessageDiv.innerHTML = messageGroup[messageIndex];
         ircMessageDisplay.insertBefore(newMessageDiv, ircMessageDisplay.firstChild);
         // Formula master :
         // Finds the amount of time it should take for a good typist to type the message by doing length of text divided by 10
