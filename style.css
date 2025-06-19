@@ -1,7 +1,7 @@
 :root{
-    --bg-color: #282c34; /* Dark background */
-    --text-color: #abb2bf; /* Light gray text */
-    --border-color: #ac3232;
+    --bg-color: #000000; /* Dark background */
+    --text-color: #1dbf00; /* Light gray text */
+    --border-color: #185518;
     --body-font: 18px 'Fira Code',monospace;
     --header-font: 32px 'Cascadia Mono',monospace;
 }
@@ -20,11 +20,11 @@ body {
   color: var(--text-color)
 }
 
-#chatHeading {
+#chatHeading{
     font: var(--header-font);
 }
 
-#mainChat {
+#mainChat{
   font: var(--body-font);
   flex: 0.85;
   width: 100%;
@@ -32,7 +32,7 @@ body {
   padding: 30px;
   margin: 0px;
   border: 1px solid var(--border-color);
-  overflow-y: auto;
+  overflow-y: scroll;
   white-space: pre-wrap;
 
   display: flex;
