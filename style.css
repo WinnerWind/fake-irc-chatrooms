@@ -24,6 +24,9 @@ body {
   padding: 30px;
   margin: 0px;
   border: 1px solid var(--border-color);
-  overflow-y: auto; /* Scroll if content overflows */
-  white-space: pre-wrap; /* Wrap long lines */
+  overflow-y: auto;
+  white-space: pre-wrap;
+
+  display: flex;
+  flex-direction: column-reverse; /* Bottom-up flow */
 }
