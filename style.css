@@ -2,8 +2,8 @@
     --bg-color: #282c34; /* Dark background */
     --text-color: #abb2bf; /* Light gray text */
     --border-color: #ac3232;
-    --body-font: 18px serif;
-    --header-font: 32px monospace;
+    --body-font: 18px 'Fira Code',monospace;
+    --header-font: 32px 'Cascadia Mono',monospace;
 }
 
 html, body {
