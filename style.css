@@ -1,18 +1,29 @@
-/* style.css */
-
-:root {
+:root{
     --bg-color: #282c34; /* Dark background */
     --text-color: #abb2bf; /* Light gray text */
+    --border-color: #ac3232;
+}
+
+html, body {
+  height: 100%;
+  margin: 20px;
+  margin-bottom: 20%;
 }
 
 body {
-    margin: 0;
-    padding: 20px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: inline-block;
-    justify-content: left;
-    align-items: left;
-    min-height: 100vh;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  color: var(--text-color)
+}
+
+#mainChat {
+  flex: 0.9;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px;
+  margin: 0px;
+  border: 1px solid var(--border-color);
+  overflow-y: auto; /* Scroll if content overflows */
+  white-space: pre-wrap; /* Wrap long lines */
 }
