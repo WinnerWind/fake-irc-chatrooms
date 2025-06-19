@@ -40,7 +40,9 @@ async function startMessages() {
 }
 
 async function fetchMessages() {
-  const messageFiles = await fetch('messages/index.txt').text().split('\n') //Allow loading text messages from index.txt
+  var indexResponse = await fetch('messages/index.txt')
+  var messageFilesRaw = await indexResponse.text() //Allow loading text messages from index.txt
+  var messageFiles = messageFilesRaw.split('\n').filter(line => line.trim().length > 0)
   for (let file of messageFiles){
     try {
       const response = await fetch('messages/'+file);
@@ -49,7 +51,7 @@ async function fetchMessages() {
       const text = await response.text();
       ircMessages.push(text.split('\n').filter(line => line.trim().length > 0)); // Split and filter empty lines
     } catch (error) {
-      console.error("Error loading messages:", error);
+      console.error("Error loading messages:", error, file);
     }
   }
 }
