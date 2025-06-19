@@ -2,6 +2,9 @@ var ircMessages = [] //Fill this from fetchMessages()
 var ircMessageDisplay = document.getElementById("mainChat")
 let lastIndex = -1; // Prevents immediate repeats.
 
+var replacements = {}
+
+fetchReplacements()
 fetchMessages()
 startMessages()
 
@@ -14,14 +17,19 @@ async function sendNewMessage(){
     const messageGroup = ircMessages[randomIndex];
 
     for (let messageIndex in messageGroup) {
+      var message = messageGroup[messageIndex]
         const newMessageDiv = document.createElement("div");
-        newMessageDiv.innerHTML = messageGroup[messageIndex];
+
+        for (let replacementString of Object.keys(replacements)){
+          message = message.replaceAll(replacementString,replacements[replacementString])
+        }
+        newMessageDiv.innerHTML = message;
         ircMessageDisplay.insertBefore(newMessageDiv, ircMessageDisplay.firstChild);
         // Formula master :
         // Finds the amount of time it should take for a good typist to type the message by doing length of text divided by 10
         // adds a random delay between 0.5 and 2 seconds
         // adds an extra delay between 0 and 1 seconds.
-        var delayBetweenMessages = (messageGroup[messageIndex].length/10)+(getRandomIndex(2,5)*1000)+(Math.random()*1000)
+        var delayBetweenMessages = (message.length/10)+(getRandomIndex(2,5)*1000)+(Math.random()*1000)
         await delay(delayBetweenMessages)
     }
 
@@ -40,6 +48,19 @@ async function startMessages() {
   // Schedule the next execution
   setTimeout(startMessages, randomDelayMilliseconds);
 }
+
+async function fetchReplacements(){
+  fetch('messages/replacements.json')
+  .then(response => response.json())
+  .then(dictionary => {
+    replacements = dictionary;
+  })
+  .catch(error => {
+    console.error("Error loading JSON:", error);
+  });
+
+}
+
 
 async function fetchMessages() {
   var indexResponse = await fetch('messages/index.txt')
