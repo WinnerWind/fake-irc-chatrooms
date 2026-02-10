@@ -40,8 +40,8 @@ async function startMessages() {
   await sendNewMessage() //We want to send a new message
 
   // Generate a random delay between min (inclusive) and max (exclusive) seconds
-  const minDelaySeconds = 1; // Minimum delay in seconds
-  const maxDelaySeconds = 3; // Maximum delay in seconds
+  const minDelaySeconds = 5; // Minimum delay in seconds
+  const maxDelaySeconds = 10; // Maximum delay in seconds
 
   const randomDelayMilliseconds = getRandomIndex(minDelaySeconds,maxDelaySeconds) * 1000;
 
