@@ -8,6 +8,10 @@ fetchReplacements()
 fetchMessages()
 startMessages()
 
+const newMessageDiv = document.createElement("div");
+newMessageDiv.innerHTML = "You have joined this channel. There is no history beyond this point."
+ircMessageDisplay.insertBefore(newMessageDiv, ircMessageDisplay.firstChild);
+
 async function sendNewMessage(){
     let randomIndex;
     do {
@@ -47,9 +51,6 @@ async function startMessages() {
 
   // Schedule the next execution
   setTimeout(startMessages, randomDelayMilliseconds);
-  const newMessageDiv = document.createElement("div");
-  newMessageDiv.innerHTML = "You have joined this channel. There is no history beyond this point."
-  ircMessageDisplay.insertBefore(newMessageDiv, ircMessageDisplay.firstChild);
 }
 
 async function fetchReplacements(){
